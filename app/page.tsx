@@ -1,9 +1,12 @@
+import React, { type FC, type ReactElement } from 'react'
 import Navbar from './components/Navbar'
 
-export default function Home() {
+const Home: FC = (): ReactElement => {
   return (
     <div className='px-5 max-w-[1200px] mx-auto'>
       <Navbar />
     </div>
   )
 }
+
+export default Home
