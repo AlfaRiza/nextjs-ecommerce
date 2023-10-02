@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript'],
+  extends: [
+    'plugin:react/recommended',
+    'standard-with-typescript',
+    'plugin:testing-library/react',
+    'plugin:jest-dom/recommended',
+  ],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
