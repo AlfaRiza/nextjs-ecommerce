@@ -1,9 +1,9 @@
-import { UseCustomInterface } from "../interface";
-import { useState } from "react";
+import { type UseCustomInterface } from '../interface'
+import { useState } from 'react'
 
 const useCustom: () => UseCustomInterface = (): UseCustomInterface => {
-  const [showProfile, setShowProfile] = useState<boolean>(false);
-  const [showNav, setShowNav] = useState<boolean>(true);
+  const [showProfile, setShowProfile] = useState<boolean>(false)
+  const [showNav, setShowNav] = useState<boolean>(true)
 
   return {
     data: {
@@ -17,4 +17,4 @@ const useCustom: () => UseCustomInterface = (): UseCustomInterface => {
   }
 }
 
-export default useCustom;
+export default useCustom

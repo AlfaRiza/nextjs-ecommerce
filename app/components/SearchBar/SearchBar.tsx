@@ -1,8 +1,8 @@
-import { type FC, ReactElement } from "react";
-import { BiSearch } from "react-icons/bi";
-import locale from "./hooks/locale";
+import React, { type FC, type ReactElement } from 'react'
+import { BiSearch } from 'react-icons/bi'
+import locale from './hooks/locale'
 
-const SearchBar: FC<{}> = (): ReactElement => {
+const SearchBar: FC = (): ReactElement => {
   return (
     <div className="flex items-center bg-gray-100 p-2 rounded-full max-md:hidden">
       <button>
@@ -15,7 +15,7 @@ const SearchBar: FC<{}> = (): ReactElement => {
         autoComplete="false"
       />
     </div>
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar
