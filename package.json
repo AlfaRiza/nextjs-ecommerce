@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "prepare": "husky install"
     },
     "dependencies": {
         "next": "latest",
@@ -23,7 +24,7 @@
         "autoprefixer": "latest",
         "eslint": "latest",
         "eslint-config-next": "latest",
-        "husky": "^8.0.3",
+        "husky": "^8.0.0",
         "lint-staged": "^14.0.1",
         "postcss": "latest",
         "prettier": "^2.5.1",

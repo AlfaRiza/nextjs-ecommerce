@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx --no-install commitlint --edit
+npx --no-install commitlint --edit ||
+(
+  echo '🤢🤮🤢🤮 Its F**KING Commit message - Your commit message looks disgusting. 🤢🤮🤢🤮
+  example commit
+  feat: add feature search on dashbaoard customer';
+  false;
+)
