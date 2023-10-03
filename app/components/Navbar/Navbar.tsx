@@ -54,7 +54,7 @@ const Navbar: FC<NavbarProps> = ({}: NavbarProps): ReactElement => {
           >
             <Image
               src={
-                'https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png'
+                ''
               }
               className="w-[30px] h-[35px] rounded-full object-cover"
               alt=""
