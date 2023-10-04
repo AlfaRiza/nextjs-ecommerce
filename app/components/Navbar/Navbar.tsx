@@ -9,6 +9,9 @@ import Image from 'next/image'
 import { CiShoppingCart } from 'react-icons/ci'
 import useCustom from './hooks'
 import { BsChevronCompactUp } from 'react-icons/bs'
+import UserIcon from '@/app/assets/icon/UserIcon/user.png'
+import { useSession } from 'next-auth/react'
+import Dropdown from './components/Dropdown'
 
 // eslint-disable-next-line no-empty-pattern
 const Navbar: FC<NavbarProps> = ({}: NavbarProps): ReactElement => {
@@ -16,6 +19,7 @@ const Navbar: FC<NavbarProps> = ({}: NavbarProps): ReactElement => {
     data: { showNav, showProfile },
     method: { setShowNav, setShowProfile }
   } = useCustom()
+  const { data: session } = useSession()
 
   return (
     <div>
@@ -36,11 +40,16 @@ const Navbar: FC<NavbarProps> = ({}: NavbarProps): ReactElement => {
                   {locale.lbl_filter}
                 </Link>
               </li>
-              <li>
-                <Link href={'myproducts'} className="py-3 inline-block w-full">
-                  {locale.lbl_my_products}
-                </Link>
-              </li>
+              {(Boolean((session?.user))) && (
+                <li>
+                  <Link
+                    href={'myproducts'}
+                    className="py-3 inline-block w-full"
+                  >
+                    {locale.lbl_my_products}
+                  </Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>
@@ -53,20 +62,19 @@ const Navbar: FC<NavbarProps> = ({}: NavbarProps): ReactElement => {
             className="relative cursor-pointer"
           >
             <Image
-              src={
-                ''
-              }
+              src={UserIcon}
               className="w-[30px] h-[35px] rounded-full object-cover"
               alt=""
               width={30}
               height={30}
             />
             <div
-              className={`absolute bg-white z-[2] rounded-lg shadow-lg ${
+              className={`absolute bg-white z-[2] w-full rounded-lg shadow-lg ${
                 showProfile ? '' : 'hidden'
               }`}
             >
-              <Link href={'/sign'}>{locale.lbl_signin}</Link>
+              {/* <Link href={'/sign'}>{locale.lbl_signin}</Link> */}
+              <Dropdown />
             </div>
           </div>
           <Link href={'/cart'}>
