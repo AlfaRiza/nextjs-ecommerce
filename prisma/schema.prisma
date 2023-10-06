@@ -6,16 +6,40 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
+model Province {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt()
+  Regency   Regency[]
+}
+
+model Regency {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(255)
+  provinceId Int
+  province   Province @relation(fields: [provinceId], references: [id])
+  User       User[]
+
+  @@index([provinceId])
+}
+
 model User {
-  id Int @id @default(autoincrement())
-  name String? @db.VarChar(255)
-  email String? @unique @db.VarChar(255)
-  password String? @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  id        Int       @id @default(autoincrement())
+  name      String?   @db.VarChar(255)
+  email     String?   @unique @db.VarChar(255)
+  phone     String?   @unique @db.VarChar(255)
+  birthDate DateTime? @db.Date
+  regencyId Int?
+  regency   Regency?   @relation(fields: [regencyId], references: [id])
+  password  String?   @db.VarChar(255)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt()
+
+  @@index([regencyId])
 }
